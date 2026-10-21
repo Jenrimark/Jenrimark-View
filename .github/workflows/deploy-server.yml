@@ -28,7 +28,7 @@ jobs:
       - name: Build static site
         run: npm run build
         env:
-          SITE_URL: ${{ vars.SITE_URL || 'https://www.jenrimark.cn' }}
+          SITE_URL: ${{ vars.SITE_URL || 'https://view.jenrimark.cn' }}
 
       - name: Deploy via rsync over SSH
         env:
@@ -39,6 +39,7 @@ jobs:
           echo "$DEPLOY_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H 8.134.103.230 >> ~/.ssh/known_hosts 2>/dev/null
-          # 排除 .well-known（acme.sh 证书续期验证目录）
-          rsync -az --delete --exclude='.well-known' dist/ root@8.134.103.230:/var/www/jenrimark/
+          # 排除 .well-known（证书续期验证目录）
+          rsync -az --delete --exclude='.well-known' dist/ root@8.134.103.230:/var/www/jenrimark-view/
+          ssh root@8.134.103.230 "chmod 644 /var/www/jenrimark-view/healthz || true"
           echo "Deploy OK: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
