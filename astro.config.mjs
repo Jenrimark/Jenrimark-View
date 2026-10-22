@@ -7,12 +7,9 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.SITE_URL || 'http://120.24.93.79:23332',
+  site: process.env.SITE_URL || 'https://view.jenrimark.cn',
   integrations: [mdx(), react()],
   vite: {
     plugins: [tailwindcss()],
-  },
-  redirects: {
-    '/about/': '/intro/',
   },
 });

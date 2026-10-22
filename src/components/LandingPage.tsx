@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from 'react';
-import { Home, ArrowUpRight, Heart } from 'lucide-react';
+import { ArrowUpRight, Heart } from 'lucide-react';
 import { profile } from '../data/profile';
 
 const VIDEO_URL =
@@ -262,19 +262,6 @@ export default function LandingPage() {
 
           {/* Hero 字标 */}
           <div className="flex-1 flex flex-col items-center justify-center text-center min-h-[2rem]">
-            {/* TEMP-面试作业：临时悬浮窗，点击跳转合租助手（http://8.163.10.100/），演示结束后删除 */}
-            <div className="mb-6 flex flex-col items-center gap-2.5">
-              <a
-                href="http://8.163.10.100/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-orange-500 to-rose-500 px-5 py-3 font-bold text-white text-base shadow-2xl shadow-orange-500/40 animate-pulse hover:scale-105 hover:shadow-orange-500/60 transition-all duration-300"
-              >
-                <Home size={20} strokeWidth={2.5} />
-                合租助手 · 点击体验
-                <ArrowUpRight size={18} strokeWidth={2.5} />
-              </a>
-            </div>
             <img
               src="/jenrimark-logo.svg"
               alt="Jenrimark"

@@ -119,8 +119,8 @@ export const profile = {
         {
           title: '合租管家',
           description:
-            '费用分摊、值日排班、囤货登记、室友公约，把最容易吵架的几件事变成清清楚楚的小工具。已部署 GitHub Pages。',
-          href: 'https://jenrimark.github.io/',
+            '费用分摊、值日排班、囤货登记、室友公约，把最容易吵架的几件事变成清清楚楚的小工具。已部署上线。',
+          href: 'http://8.163.10.100/',
           live: true,
           meta: 'Vite · React · TypeScript · Express',
           color: '#4f9de0',
@@ -128,10 +128,10 @@ export const profile = {
         {
           title: 'Jenrimark 个人门户',
           description:
-            '当前所在站点：Astro 静态站，聚合个人项目、作品集与知识库，Git push 触发 Webhook 自动部署。',
-          href: 'http://120.24.93.79:23332/',
+            '个人主站：AI 产品与全栈作品集，Next.js 全栈应用。',
+          href: 'https://me.jenrimark.cn/',
           live: true,
-          meta: 'Astro · CI/CD',
+          meta: 'Next.js · CI/CD',
           color: '#e07a4f',
         },
       ],
