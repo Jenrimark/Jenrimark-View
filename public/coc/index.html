@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+  <meta content="花心世界部落 · 奶号运营捐款公示。公开每一笔服务器费用捐款，浏览无需登录。" name="description">
+  <title>花心世界 · 奶号运营捐款公示</title>
+  <style>
+/* ============================================================
+   花心世界 · 奶号运营捐款公示 — 样式表
+   风格：COC 金色 / 宝蓝 / 木纹 + 干净浅色阅读区
+   ============================================================ */
+
+:root{
+  --gold:#f5c34b;
+  --gold-light:#ffe08a;
+  --gold-deep:#b7801a;
+  --blue:#1d3c6e;
+  --blue-deep:#122a50;
+  --wood:#4a2f1b;
+  --ink:#2c251c;
+  --ink-soft:#6d6252;
+  --cream:#fffaf0;
+  --paper:#ffffff;
+  --line:#e9dfc9;
+  --tint:#faf5e9;
+  --red:#d95147;
+  --green:#2f9c72;
+  --shadow:0 10px 30px rgba(60,44,20,.09);
+  --shadow-lg:0 20px 50px rgba(40,30,14,.16);
+  --r:16px;
+  --wrap:1180px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{
+  margin:0;
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Segoe UI",system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.65;
+}
+img,svg{display:block}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+.svg-sprite{position:absolute;width:0;height:0;overflow:hidden}
+.ico{width:1em;height:1em;display:inline-block;flex:none;vertical-align:-.12em}
+.wrap{width:min(100% - 40px,var(--wrap));margin-inline:auto}
+.gold-text{color:var(--gold)}
+
+/* ---------- 通用按钮 ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;justify-content:center;
+  padding:13px 24px;border-radius:11px;font-weight:700;font-size:15px;
+  border:2px solid transparent;transition:transform .18s,box-shadow .18s,background .18s;
+  white-space:nowrap;
+}
+.btn .ico{width:17px;height:17px}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:linear-gradient(180deg,#ffdc7d,#f0b636);color:#3a2708;border-color:#ffe8a8;box-shadow:0 6px 0 #a9721a,0 12px 22px rgba(0,0,0,.22)}
+.btn-gold:hover{box-shadow:0 8px 0 #a9721a,0 16px 26px rgba(0,0,0,.26)}
+.btn-gold:active{transform:translateY(3px);box-shadow:0 3px 0 #a9721a}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,225,150,.5)}
+.btn-ghost:hover{background:rgba(255,255,255,.16)}
+.btn-block{width:100%}
+
+/* ============================================================
+   顶部导航
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:60;
+  background:rgba(255,250,240,.93);
+  backdrop-filter:blur(14px);
+  border-bottom:2px solid var(--gold);
+  box-shadow:0 3px 18px rgba(60,44,20,.07);
+}
+.nav-inner{display:flex;align-items:center;gap:24px;min-height:72px}
+.brand{display:flex;align-items:center;gap:11px;flex:none}
+.brand-badge{width:42px;height:42px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.18))}
+.brand-badge svg{width:100%;height:100%}
+.brand-text{display:flex;flex-direction:column;line-height:1.15}
+.brand-text strong{font-size:19px;font-weight:900;letter-spacing:1px;color:var(--blue-deep)}
+.brand-text small{font-size:9px;letter-spacing:2.2px;color:var(--gold-deep);font-weight:800;margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nav-links a{
+  padding:9px 15px;border-radius:9px;font-size:14.5px;font-weight:600;color:#5b5142;
+  transition:background .18s,color .18s;
+}
+.nav-links a:hover,.nav-links a.active{background:#f6e9c9;color:var(--blue-deep)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.guest-hint{font-size:12px;color:#9a8c75;white-space:nowrap}
+.btn-login{
+  display:inline-flex;align-items:center;gap:7px;
+  background:linear-gradient(180deg,#2c5592,#1d3c6e);color:#fff;
+  border:1px solid #17407e;border-bottom:3px solid #0f2a52;
+  padding:9px 17px;border-radius:10px;font-size:14px;font-weight:700;
+  transition:transform .16s,filter .16s;
+}
+.btn-login:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.btn-login .ico{width:15px;height:15px}
+.btn-menu{display:none;background:none;border:0;padding:8px;color:var(--blue-deep)}
+.btn-menu .ico{width:24px;height:24px}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(ellipse at 78% 25%,rgba(245,195,75,.20),transparent 55%),
+    radial-gradient(ellipse at 15% 80%,rgba(44,95,168,.35),transparent 60%),
+    linear-gradient(160deg,#183764 0%,#122a50 55%,#0d1f3c 100%);
+  color:#fff;
+  padding:72px 0 96px;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
+  background:repeating-linear-gradient(0deg,transparent 0 47px,rgba(255,255,255,.035) 47px 48px),
+             repeating-linear-gradient(90deg,transparent 0 95px,rgba(255,255,255,.025) 95px 96px);
+}
+.hero-glow{position:absolute;width:620px;height:620px;right:-100px;top:-180px;border-radius:50%;background:radial-gradient(circle,rgba(245,195,75,.20),transparent 65%);pointer-events:none}
+.hero-sparks{position:absolute;inset:0;pointer-events:none}
+.hero-sparks i{position:absolute;width:7px;height:7px;background:var(--gold);border-radius:50%;box-shadow:0 0 14px 3px rgba(245,195,75,.55);animation:float 5s ease-in-out infinite}
+.hero-sparks i:nth-child(1){left:8%;top:22%;animation-delay:0s}
+.hero-sparks i:nth-child(2){left:46%;top:12%;animation-delay:.8s;width:5px;height:5px}
+.hero-sparks i:nth-child(3){left:63%;top:78%;animation-delay:1.5s}
+.hero-sparks i:nth-child(4){left:88%;top:62%;animation-delay:2.2s;width:5px;height:5px}
+.hero-sparks i:nth-child(5){left:28%;top:84%;animation-delay:1.1s;width:5px;height:5px}
+.hero-sparks i:nth-child(6){left:93%;top:18%;animation-delay:2.8s}
+@keyframes float{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(-16px);opacity:1}}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:50px;align-items:center}
+.hero-copy,.hero-emblem{min-width:0}
+.hero h1{overflow-wrap:anywhere}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--gold-light);font-size:12px;font-weight:800;letter-spacing:2.4px;
+  border:1px solid rgba(245,195,75,.4);background:rgba(245,195,75,.09);
+  padding:7px 14px;border-radius:100px;margin-bottom:22px;
+}
+.eyebrow .ico{width:15px;height:15px}
+.hero h1{font-size:clamp(36px,5.2vw,62px);line-height:1.18;font-weight:900;letter-spacing:1px;text-shadow:0 4px 0 rgba(0,0,0,.28)}
+.hero h1 .gold-text{
+  background:linear-gradient(180deg,#fff2bd,#f5c34b 55%,#d69c25);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:none;filter:drop-shadow(0 3px 0 rgba(90,55,5,.55));
+}
+.hero-lead{max-width:560px;margin:22px 0 30px;color:#cddcf2;font-size:16px;line-height:1.9}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-note{display:flex;align-items:center;gap:7px;margin-top:24px;font-size:13px;color:#a9c2e4}
+.hero-note .ico{width:16px;height:16px;color:#7fd6a5}
+.hero-emblem{position:relative;display:flex;flex-direction:column;align-items:center}
+.emblem-rays{position:absolute;width:360px;height:360px;top:0;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(245,195,75,.11) 0 12deg,transparent 12deg 30deg);
+  animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.emblem-svg{position:relative;width:min(100%,320px);filter:drop-shadow(0 18px 26px rgba(0,0,0,.5))}
+.emblem-caption{display:flex;align-items:center;gap:8px;margin-top:-6px;position:relative;
+  background:rgba(0,0,0,.35);border:1px solid rgba(245,195,75,.45);color:var(--gold-light);
+  padding:8px 18px;border-radius:100px;font-size:13px;font-weight:700;letter-spacing:1px}
+.emblem-caption .ico{width:15px;height:15px}
+.hero-wall{position:absolute;bottom:0;left:0;right:0;height:22px;z-index:3;
+  background:
+    repeating-linear-gradient(90deg,#6a4524 0 46px,#3d2714 46px 49px),
+    #4a2f1b;
+  border-top:4px solid #8a5c2e;
+  box-shadow:inset 0 4px 0 rgba(255,220,150,.18),0 -4px 14px rgba(0,0,0,.25);
+  opacity:.95;
+}
+
+/* ============================================================
+   总览卡片
+   ============================================================ */
+.overview-section{position:relative;z-index:5;margin-top:-44px}
+.overview-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.stat-card{
+  position:relative;overflow:hidden;
+  background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--gold);
+  border-radius:var(--r);padding:22px 22px 20px;box-shadow:var(--shadow);
+}
+.stat-card::after{content:"";position:absolute;right:-25px;bottom:-35px;width:110px;height:110px;border-radius:50%;background:rgba(245,195,75,.10)}
+.stat-card:nth-child(2){border-top-color:#2c5592}
+.stat-card:nth-child(2)::after{background:rgba(44,85,146,.09)}
+.stat-card:nth-child(3){border-top-color:#2f9c72}
+.stat-card:nth-child(3)::after{background:rgba(47,156,114,.09)}
+.stat-card:nth-child(4){border-top-color:#d95147}
+.stat-card:nth-child(4)::after{background:rgba(217,81,71,.09)}
+.stat-label{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft);font-weight:600}
+.stat-label .ico{width:16px;height:16px;color:var(--gold-deep)}
+.stat-card:nth-child(2) .stat-label .ico{color:#2c5592}
+.stat-card:nth-child(3) .stat-label .ico{color:#2f9c72}
+.stat-card:nth-child(4) .stat-label .ico{color:#d95147}
+.stat-value{font-size:34px;font-weight:900;line-height:1.2;margin:9px 0 3px;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.stat-value .cur{font-size:19px;margin-right:2px;color:var(--gold-deep);vertical-align:5px}
+.stat-value .unit{font-size:15px;font-weight:700;color:var(--ink-soft);margin-left:3px}
+.stat-hint{font-size:12px;color:#9a8c75}
+
+/* ============================================================
+   通用区块
+   ============================================================ */
+.section{padding:84px 0}
+.section-tint{background:var(--tint);border-block:1px solid var(--line)}
+.section-head{margin-bottom:38px}
+.section-head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.section-kicker{display:inline-block;font-size:11px;font-weight:900;letter-spacing:3px;color:var(--gold-deep);margin-bottom:10px}
+.section-head h2{font-size:clamp(26px,3.2vw,36px);font-weight:900;color:var(--blue-deep);letter-spacing:.5px;position:relative;padding-bottom:14px}
+.section-head h2::after{content:"";position:absolute;left:0;bottom:0;width:52px;height:5px;border-radius:5px;background:linear-gradient(90deg,var(--gold),var(--gold-deep))}
+.section-head p{margin-top:12px;color:var(--ink-soft);font-size:15px}
+/* 加粗黑体时间（如 2026-10-15） */
+.date-strong{font-weight:900;color:#141210;font-variant-numeric:tabular-nums;letter-spacing:.2px;white-space:nowrap}
+.date-strong-light{color:var(--gold-light)}
+
+/* ============================================================
+   运营背景
+   ============================================================ */
+.about-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:26px;align-items:start}
+.about-main{display:flex;flex-direction:column;gap:14px}
+.story-step{display:flex;gap:20px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:0 3px 12px rgba(60,44,20,.04);transition:transform .2s,box-shadow .2s}
+.story-step:hover{transform:translateX(4px);box-shadow:var(--shadow)}
+.step-num{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(180deg,#ffe08a,#eab336);color:#5a3c08;font-weight:900;font-size:16px;
+  border-bottom:3px solid #b7801a}
+.story-step h3{font-size:17px;font-weight:800;color:var(--blue-deep);margin-bottom:7px}
+.story-step p{font-size:14.5px;color:#5f5648;line-height:1.85}
+.cost-card{
+  position:relative;overflow:hidden;border-radius:var(--r);padding:26px;color:#fff;
+  background:linear-gradient(160deg,#2c5592,#122a50 70%);
+  border:2px solid var(--gold);box-shadow:var(--shadow-lg);
+}
+.cost-card::before{content:"";position:absolute;inset:0;opacity:.16;background:repeating-linear-gradient(45deg,transparent 0 12px,rgba(255,255,255,.12) 12px 13px)}
+.cost-card>*{position:relative}
+.cost-card-top{display:flex;align-items:center;gap:8px;color:var(--gold-light);font-size:13px;font-weight:800;letter-spacing:1px}
+.cost-card-top .ico{width:18px;height:18px}
+.cost-amount{display:flex;align-items:baseline;gap:4px;margin:10px 0 4px}
+.cost-amount .cur{font-size:24px;color:var(--gold)}
+.cost-amount strong{font-size:64px;line-height:1;font-weight:900;color:var(--gold);text-shadow:0 4px 0 rgba(0,0,0,.3);font-variant-numeric:tabular-nums}
+.cost-amount .unit{font-size:16px;color:#b9cdea;margin-left:4px}
+.cost-bar{height:9px;border-radius:9px;background:rgba(0,0,0,.3);overflow:hidden;margin:16px 0 20px;border:1px solid rgba(255,255,255,.12)}
+.cost-bar span{display:block;height:100%;width:78%;border-radius:9px;background:linear-gradient(90deg,#f5c34b,#ffe08a)}
+.cost-list{border-top:1px solid rgba(255,255,255,.16)}
+.cost-list li{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:13.5px}
+.cost-list li span{color:#a8bfdf}
+.cost-list li b{color:#fff;font-weight:700;text-align:right}
+.cost-foot{display:flex;align-items:center;gap:8px;margin-top:18px;font-size:12.5px;color:var(--gold-light)}
+.cost-foot .ico{width:15px;height:15px}
+
+/* ============================================================
+   明细表
+   ============================================================ */
+.table-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.toolbar{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line);background:#fffdf7}
+.search-box{display:flex;align-items:center;gap:9px;flex:1 1 240px;max-width:360px;background:var(--cream);border:1.5px solid var(--line);border-radius:10px;padding:0 13px;transition:border-color .18s,box-shadow .18s}
+.search-box:focus-within{border-color:var(--gold-deep);box-shadow:0 0 0 3px rgba(245,195,75,.18)}
+.search-box .ico{width:17px;height:17px;color:#a69a83}
+.search-box input{border:0;outline:0;background:none;width:100%;padding:10px 0;font-size:14px}
+.toolbar-controls{display:flex;gap:9px;flex-wrap:wrap}
+.toolbar select{height:40px;border-radius:9px;border:1.5px solid var(--line);background:#fff;font-size:13.5px;font-weight:600;padding:0 12px}
+.toolbar select{cursor:pointer;color:#4c4438}
+.toolbar select:focus{outline:2px solid rgba(245,195,75,.6);outline-offset:1px}
+.data-status{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 14px;border-radius:100px;font-size:12.5px;font-weight:700;white-space:nowrap}
+.data-status::before{content:'';width:8px;height:8px;border-radius:50%;flex:none}
+.data-status.ok{color:#2c6e4f;background:#e6f4ec;border:1px solid #c5e4d3}
+.data-status.ok::before{background:#3d9e75}
+.data-status.err{color:#8a5a10;background:#fff3d6;border:1px solid #f0dca0}
+.data-status.err::before{background:#d99a2b}
+.table-meta{padding:12px 20px;background:#fffaf0;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-soft)}
+.table-meta b{color:var(--blue-deep)}
+.ledger-table{width:100%;border-collapse:collapse;font-size:14.5px;table-layout:fixed}
+.ledger-table thead th{
+  text-align:left;padding:13px 20px;font-size:12px;font-weight:800;letter-spacing:1.2px;color:#8b7c62;
+  background:#fdf8ec;border-bottom:2px solid var(--line);white-space:nowrap;
+}
+.ledger-table th:nth-child(3),.ledger-table td:nth-child(3){text-align:right}
+.ledger-table th:nth-child(4),.ledger-table td:nth-child(4){text-align:center}
+.ledger-table tbody td{padding:14px 20px;border-bottom:1px solid #f1ead9;vertical-align:middle;overflow-wrap:anywhere}
+.ledger-table tbody tr:last-child td{border-bottom:0}
+.ledger-table tbody tr{transition:background .15s}
+.ledger-table tbody tr:hover{background:#fffbf0}
+.player-cell{display:flex;align-items:center;gap:10px}
+.avatar{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:900;font-size:15px;color:#fff;flex:none;border-bottom:2px solid rgba(0,0,0,.18)}
+.player-name{font-weight:700;color:var(--blue-deep);white-space:nowrap}
+.role-tag{font-size:10.5px;font-weight:700;color:#8a6416;background:#fff2cd;border:1px solid #eed69b;padding:1px 7px;border-radius:100px;margin-left:7px;white-space:nowrap}
+.role-tag.fu{color:#2c5592;background:#e8f0fb;border-color:#cbdcf3}
+.role-tag.zhang{color:#3d7a5c;background:#e6f4ec;border-color:#c5e4d3}
+.amount-cell{font-weight:900;font-size:16px;color:#b2761a;font-variant-numeric:tabular-nums;white-space:nowrap}
+.amount-cell .c{font-size:12px;margin-right:1px}
+.note-cell{color:#6b6152;line-height:1.6}
+
+/* ---------- 汇总表 / 明细表 ---------- */
+.sum-table .player-cell .player-name{font-weight:700;color:var(--blue-deep)}
+.empty-state{padding:52px 20px;text-align:center;color:#9a8c75;font-size:14px}
+
+/* ============================================================
+   统计
+   ============================================================ */
+.stats-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow)}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:22px;padding-bottom:14px;border-bottom:2px solid var(--line)}
+.panel-head h3{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:800;color:var(--blue-deep)}
+.panel-head h3 .ico{width:19px;height:19px;color:var(--gold-deep)}
+.panel-head span{font-size:12px;color:#9a8c75}
+.rank-list{display:flex;flex-direction:column;gap:15px}
+.rank-row{display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:center}
+.rank-no{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:#f2ead6;color:#8a7a5c;font-weight:900;font-size:12px}
+.rank-row:nth-child(1) .rank-no{background:linear-gradient(180deg,#ffe08a,#eab336);color:#5a3c08}
+.rank-row:nth-child(2) .rank-no{background:#e3e9f1;color:#4c5f7a}
+.rank-row:nth-child(3) .rank-no{background:#f0dcc4;color:#8a6238}
+.rank-body{min-width:0}
+.rank-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:6px}
+.rank-top .nm{font-weight:700;font-size:14px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank-top .vl{font-weight:900;font-size:14px;color:#b2761a;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rank-track{height:10px;background:#f3ecdc;border-radius:10px;overflow:hidden}
+.rank-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,#e7ae35,#ffd873);transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.rank-row:nth-child(1) .rank-fill{background:linear-gradient(90deg,#d79b20,#ffe08a)}
+.rank-sub{font-size:11.5px;color:#a1957e;margin-top:4px}
+/* ---------- 捐款汇总表 ---------- */
+.rank-table{width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed}
+.rank-table thead th{text-align:left;padding:11px 12px;font-size:11.5px;font-weight:800;letter-spacing:1.1px;color:#8b7c62;background:#fdf8ec;border-bottom:2px solid var(--line);white-space:nowrap}
+.rank-table thead th.rk-r{text-align:right}
+.rank-table tbody td{padding:13px 12px;border-bottom:1px solid #f1ead9;vertical-align:middle}
+.rank-table tbody tr:last-child td{border-bottom:0}
+.rank-table tbody tr:hover{background:#fffbf0}
+.rk-badge{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:#f2ead6;color:#8a7a5c;font-weight:900;font-size:12px}
+.rk-row.top1 .rk-badge{background:linear-gradient(180deg,#ffe08a,#eab336);color:#5a3c08}
+.rk-row.top2 .rk-badge{background:#e3e9f1;color:#4c5f7a}
+.rk-row.top3 .rk-badge{background:#f0dcc4;color:#8a6238}
+.rk-chip{display:none}
+.avatar.sm{width:28px;height:28px;border-radius:8px;font-size:12.5px}
+.rk-count,.rk-total,.rk-pct{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.rk-count{color:#5c5344;font-weight:600}
+.rk-total{font-weight:900;color:#b2761a;font-size:15px}
+.rk-pct{color:#6d6252;font-size:12.5px}
+.pct-bar{display:inline-block;width:60px;height:6px;border-radius:6px;background:#f3ecdc;overflow:hidden;vertical-align:2px;margin-right:8px}
+.pct-bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#e7ae35,#ffd873)}
+.chart-wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:6px;height:230px;padding:10px 4px 0;position:relative;border-bottom:2px solid var(--line)}
+.chart-col{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px;position:relative}
+.chart-val{font-size:10.5px;font-weight:800;color:#b2761a;font-variant-numeric:tabular-nums;white-space:nowrap}
+.chart-bar{width:min(100%,34px);border-radius:6px 6px 0 0;background:linear-gradient(180deg,#ffd873,#e0a52b);border:1px solid #cf9522;border-bottom:0;transition:height .9s cubic-bezier(.2,.8,.2,1);min-height:3px}
+.chart-col:hover .chart-bar{filter:brightness(1.08)}
+.chart-label{font-size:10.5px;color:#8b7c62;white-space:nowrap;position:absolute;bottom:-24px;font-variant-numeric:tabular-nums}
+.chart-label.short{display:none}
+.chart-wrap{padding-bottom:0;margin-bottom:30px}
+.chart-legend{display:flex;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--ink-soft);margin-top:6px}
+.chart-legend span{display:flex;align-items:center;gap:7px}
+.chart-legend i{width:14px;height:10px;border-radius:2px;display:inline-block}
+.lg-bar{background:linear-gradient(180deg,#ffd873,#e0a52b)}
+.balance-strip{margin-top:22px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:20px 26px;border-radius:var(--r);
+  background:linear-gradient(100deg,#fff6df,#fffdf6);border:1px solid #edd9a8;border-left:6px solid var(--gold)}
+.balance-strip .bs-icon{width:44px;height:44px;border-radius:12px;background:var(--gold);display:grid;place-items:center;color:#5a3c08;flex:none}
+.balance-strip .bs-icon .ico{width:24px;height:24px}
+.balance-strip p{font-size:14px;color:#6a5b3f;line-height:1.75}
+.balance-strip strong{color:var(--blue-deep);font-weight:900}
+.balance-strip .bs-num{font-size:17px;color:#a66c12;font-weight:900;font-variant-numeric:tabular-nums}
+
+/* ============================================================
+   承诺条 / 页脚
+   ============================================================ */
+.pledge{background:linear-gradient(120deg,#1d3c6e,#122a50);color:#fff;padding:44px 0;border-top:4px solid var(--gold)}
+.pledge-inner{display:flex;align-items:center;gap:22px}
+.pledge-icon{width:58px;height:58px;border-radius:16px;background:rgba(245,195,75,.16);border:1px solid rgba(245,195,75,.5);display:grid;place-items:center;color:var(--gold);flex:none}
+.pledge-icon .ico{width:30px;height:30px}
+.pledge h3{font-size:19px;font-weight:800;margin-bottom:5px}
+.pledge p{font-size:13.5px;color:#bcd0ec;max-width:680px;line-height:1.8}
+.pledge .btn{margin-left:auto}
+.site-footer{background:#0e1c33;color:#8fa5c4;padding:30px 0;font-size:12.5px}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-brand{display:flex;align-items:center;gap:11px;color:#fff}
+.footer-brand svg{width:38px;height:38px}
+.footer-brand div{display:flex;flex-direction:column}
+.footer-brand strong{font-size:15px;font-weight:800}
+.footer-brand span{font-size:11px;color:#8fa5c4}
+.footer-meta{display:flex;flex-direction:column;gap:3px;text-align:right}
+
+/* ============================================================
+   登录弹窗（可选）
+   ============================================================ */
+.modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px}
+.modal[hidden]{display:none}
+.modal-mask{position:absolute;inset:0;background:rgba(10,22,40,.62);backdrop-filter:blur(3px)}
+.modal-box{position:relative;width:min(100%,400px);background:#fff;border-radius:20px;border:2px solid var(--gold);
+  padding:30px;box-shadow:0 30px 70px rgba(0,0,0,.35);text-align:center;animation:pop .25s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:none}}
+.modal-close{position:absolute;right:14px;top:14px;width:32px;height:32px;border-radius:9px;border:0;background:#f4eee0;color:#6b6152;display:grid;place-items:center}
+.modal-close:hover{background:#eadfc7}
+.modal-close .ico{width:16px;height:16px}
+.modal-badge{width:58px;height:58px;margin:0 auto 14px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(180deg,#2c5592,#1d3c6e);color:var(--gold)}
+.modal-badge .ico{width:30px;height:30px}
+.modal-box h3{font-size:21px;font-weight:900;color:var(--blue-deep)}
+.modal-tip{font-size:13px;color:#6b6152;line-height:1.8;margin:10px 0 20px}
+.modal-tip b{color:#b2761a}
+#loginForm{display:flex;flex-direction:column;gap:13px;text-align:left}
+#loginForm label{font-size:12.5px;font-weight:700;color:#5c5344;display:flex;flex-direction:column;gap:6px}
+#loginForm input{border:1.5px solid var(--line);border-radius:10px;padding:11px 13px;font-size:14px;outline:0;background:#fffdf7}
+#loginForm input:focus{border-color:var(--gold-deep);box-shadow:0 0 0 3px rgba(245,195,75,.2)}
+#loginForm .btn{margin-top:6px}
+.modal-skip{display:block;width:100%;margin-top:14px;background:none;border:0;color:#8b7c62;font-size:13px;text-decoration:underline;text-underline-offset:3px}
+.modal-skip:hover{color:var(--blue)}
+
+/* 入场动画 */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ============================================================
+   响应式
+   ============================================================ */
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:minmax(0,1fr);gap:30px;text-align:center}
+  .hero-copy{order:1}
+  .hero-emblem{order:2;transform:scale(.82);margin-block:-20px}
+  .eyebrow{margin-inline:auto}
+  .hero-lead{margin-inline:auto}
+  .hero-cta,.hero-note{justify-content:center}
+  .overview-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .about-grid{grid-template-columns:minmax(0,1fr)}
+  .stats-grid{grid-template-columns:minmax(0,1fr)}
+  .pledge-inner{flex-wrap:wrap}
+  .pledge .btn{margin-left:0}
+}
+@media (max-width:760px){
+  .wrap{width:min(100% - 28px,var(--wrap))}
+  .nav-inner{min-height:62px;gap:10px}
+  .brand-text strong{font-size:16px}
+  .brand-text small{font-size:8px;letter-spacing:1.4px}
+  .brand-badge{width:36px;height:36px}
+  .guest-hint{display:none}
+  .btn-login{padding:8px 12px;font-size:13px}
+  .btn-menu{display:block}
+  .nav-links{
+    position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;align-items:stretch;
+    background:#fffaf0;border-bottom:2px solid var(--gold);padding:10px 14px 16px;gap:2px;
+    box-shadow:0 12px 24px rgba(60,44,20,.14);
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:11px 14px;font-size:15px}
+  .hero{padding:48px 0 76px}
+  .hero h1{font-size:clamp(32px,9vw,44px)}
+  .hero-lead{font-size:14.5px}
+  .hero-cta{flex-direction:column}
+  .hero-cta .btn{width:100%}
+  .hero-emblem{transform:scale(.76);margin-block:-30px -10px}
+  .emblem-rays{width:280px;height:280px}
+  .section{padding:58px 0}
+  .section-head{margin-bottom:28px}
+  .overview-grid{gap:11px;margin-top:-34px}
+  .stat-card{padding:16px}
+  .stat-value{font-size:26px}
+  .stat-hint{font-size:11px}
+  .story-step{padding:18px;gap:14px}
+  .step-num{width:38px;height:38px;font-size:14px}
+  .cost-amount strong{font-size:54px}
+  .toolbar{padding:14px;flex-direction:column;align-items:stretch}
+  .search-box{flex:0 0 auto;max-width:none;width:100%;height:44px}
+  .search-box input{padding:0}
+  .table-meta{padding:11px 14px;font-size:12px}
+
+  /* 明细表转卡片 */
+  .table-scroll{padding:6px 12px 12px}
+  .ledger-table thead{display:none}
+  .ledger-table,.ledger-table tbody,.ledger-table tr,.ledger-table td{display:block;width:100%}
+  .ledger-table tbody tr.rec-row{
+    background:#fffdf7;border:1px solid var(--line);border-left:4px solid var(--gold);
+    border-radius:12px;padding:12px 14px;margin-bottom:10px;
+  }
+  .ledger-table tbody tr.rec-row td{padding:5px 0;border:0;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left}
+  .ledger-table tbody tr.rec-row td:first-child{padding:2px 0 10px}
+  .ledger-table tbody tr.rec-row td:first-child::before{display:none}
+  .ledger-table tbody tr.rec-row td:nth-child(3){text-align:left}
+  .ledger-table tbody tr.rec-row td::before{
+    content:attr(data-label);font-size:11.5px;font-weight:800;color:#a1957e;letter-spacing:1px;flex:none;
+  }
+  .player-cell{flex-wrap:wrap;row-gap:5px}
+  .player-name{white-space:normal}
+  .role-tag{margin-left:0}
+  .amount-cell{font-size:17px}
+  .note-cell{text-align:right;font-size:13px;max-width:70%}
+
+  /* 总榜转卡片 */
+  .rank-table thead{display:none}
+  .rank-table,.rank-table tbody,.rank-table tr,.rank-table td{display:block;width:100%}
+  .rank-table tbody tr{
+    background:#fffdf7;border:1px solid var(--line);border-left:4px solid var(--gold);
+    border-radius:12px;padding:12px 14px;margin-bottom:10px;
+  }
+  .rank-table tbody tr:hover{background:#fffdf7}
+  .rank-table tbody td{padding:5px 0;border:0;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:right}
+  .rank-table tbody td::before{
+    content:attr(data-label);font-size:11.5px;font-weight:800;color:#a1957e;letter-spacing:1px;flex:none;
+  }
+  .rank-table td.rk-no{display:none}
+  .rk-chip{display:grid;flex:none;margin-right:2px}
+  .rk-row.top1 .rk-chip{background:linear-gradient(180deg,#ffe08a,#eab336);color:#5a3c08}
+  .rk-row.top2 .rk-chip{background:#e3e9f1;color:#4c5f7a}
+  .rk-row.top3 .rk-chip{background:#f0dcc4;color:#8a6238}
+  .avatar.sm{width:26px;height:26px;font-size:11.5px}
+  .pct-bar{width:52px}
+  .rank-table .player-cell{flex-wrap:nowrap;justify-content:flex-end;min-width:0}
+  .rank-table .player-name{overflow:hidden;text-overflow:ellipsis}
+  .panel{padding:18px}
+  .chart-wrap{height:190px;gap:3px}
+  .chart-val{font-size:9px}
+  .chart-bar{width:min(100%,22px)}
+  .chart-label{font-size:9px;bottom:-22px}
+  .chart-label.full{display:none}
+  .chart-label.short{display:block}
+  .balance-strip{padding:16px 18px;gap:12px}
+  .pledge{padding:34px 0}
+  .pledge-inner{gap:14px}
+  .pledge p{font-size:12.5px}
+  .footer-meta{text-align:left}
+}
+@media (max-width:380px){
+  .overview-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat-value{font-size:22px}
+  .chart-val{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+@media print{
+  .site-header,.hero,.pledge,.toolbar,.table-footer,.modal,.hero-wall{display:none!important}
+  body{background:#fff}
+  .section{padding:20px 0}
+  .table-card,.panel,.stat-card{box-shadow:none}
+}
+
+</style>
+  <link href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231d3c6e'/><path d='M32 10 52 18v16c0 12-9 18-20 22-11-4-20-10-20-22V18z' fill='%23f5c34b'/><text x='32' y='42' font-size='26' text-anchor='middle' fill='%231d3c6e'>花</text></svg>" rel="icon">
+</head>
+<body>
+
+<!-- ============ 可复用 SVG 图标 ============ -->
+<svg aria-hidden="true" class="svg-sprite" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-crown" viewBox="0 0 24 24"><path d="M2 8l4.5 4L12 4l5.5 8L22 8l-2 10H4L2 8z" fill="currentColor"/><path d="M4 20h16v2H4z" fill="currentColor"/></symbol>
+  <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" fill="currentColor" r="9"/><circle cx="12" cy="12" fill="none" r="6.2" stroke="rgba(0,0,0,.22)" stroke-width="1.4"/><path d="M12 7.5v9M9.2 9.6h4.3a1.6 1.6 0 010 3.2H10a1.6 1.6 0 000 3.2h4.5" fill="none" stroke="rgba(0,0,0,.4)" stroke-linecap="round" stroke-width="1.4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2l9 3.5v6.2c0 5.6-4 9.1-9 10.8-5-1.7-9-5.2-9-10.8V5.5L12 2z" fill="currentColor"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect fill="currentColor" height="7" rx="2" width="18" x="3" y="3"/><rect fill="currentColor" height="7" rx="2" width="18" x="3" y="14"/><circle cx="7" cy="6.5" fill="rgba(0,0,0,.4)" r="1.2"/><circle cx="7" cy="17.5" fill="rgba(0,0,0,.4)" r="1.2"/><rect fill="rgba(0,0,0,.35)" height="1.4" rx=".7" width="7" x="11" y="5.8"/><rect fill="rgba(0,0,0,.35)" height="1.4" rx=".7" width="7" x="11" y="16.8"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><rect fill="currentColor" height="4" rx="1.4" width="18" x="3" y="4"/><rect fill="currentColor" height="4" opacity=".7" rx="1.4" width="18" x="3" y="10"/><rect fill="currentColor" height="4" opacity=".45" rx="1.4" width="18" x="3" y="16"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><rect fill="currentColor" height="9" rx="1" width="4" x="3" y="12"/><rect fill="currentColor" height="14" opacity=".75" rx="1" width="4" x="10" y="7"/><rect fill="currentColor" height="18" opacity=".5" rx="1" width="4" x="17" y="3"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" fill="none" r="6.5" stroke="currentColor" stroke-width="2.2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" fill="currentColor" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="currentColor"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"/></symbol>
+</svg>
+
+<!-- ============ 顶部导航 ============ -->
+<header class="site-header" id="top">
+  <div class="wrap nav-inner">
+    <a aria-label="花心世界 首页" class="brand" href="#home">
+      <span aria-hidden="true" class="brand-badge">
+        <svg viewBox="0 0 48 48"><path d="M24 3l18 6.5v14c0 11-8 18-18 21.5C14 41.5 6 34.5 6 23.5v-14L24 3z" fill="#f5c34b" stroke="#8a5a12" stroke-width="2"/><path d="M24 8l13 4.7v10.8c0 8-5.8 13.2-13 15.8-7.2-2.6-13-7.8-13-15.8V12.7L24 8z" fill="#1d3c6e"/><text fill="#ffd76a" font-family="sans-serif" font-size="19" font-weight="900" text-anchor="middle" x="24" y="31">花</text></svg>
+      </span>
+      <span class="brand-text"><strong>花心世界</strong><small>DONATION LEDGER</small></span>
+    </a>
+
+    <nav aria-label="主导航" class="nav-links" id="navLinks">
+      <a href="#home">首页</a>
+      <a href="#about">运营说明</a>
+      <a href="#records">捐款汇总</a>
+      <a href="#ledger">捐款明细</a>
+      <a href="#stats">统计汇总</a>
+    </nav>
+
+    <div class="nav-actions">
+      <span class="guest-hint">访客可自由浏览</span>
+      <button class="btn-login" id="loginBtn" type="button">
+        <svg class="ico"><use href="#i-user"></use></svg><span id="loginLabel">登录</span>
+      </button>
+      <button aria-expanded="false" aria-label="展开菜单" class="btn-menu" id="menuBtn" type="button">
+        <svg class="ico"><use href="#i-menu"></use></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div aria-hidden="true" class="hero-glow"></div>
+    <div aria-hidden="true" class="hero-sparks"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow"><svg class="ico"><use href="#i-crown"></use></svg> CLAN OF CLANS · 部落财务公开</div>
+        <h1>花心世界<br><span class="gold-text">奶号运营捐款公示</span></h1>
+        <p class="hero-lead">每一笔都记在明处。奶号 24 小时挂在服务器上，靠首领们凑份子续命；这里公开全部捐款流水、按人汇总与总额，谁都可以看。</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="#ledger">查看捐款明细 <svg class="ico"><use href="#i-arrow"></use></svg></a>
+          <a class="btn btn-ghost" href="#about">先了解运营背景</a>
+        </div>
+        <div class="hero-note"><svg class="ico"><use href="#i-check"></use></svg> 无需登录、无弹窗拦截，主页 / 明细 / 统计全程开放</div>
+      </div>
+
+      <div aria-hidden="true" class="hero-emblem">
+        <div class="emblem-rays"></div>
+        <svg class="emblem-svg" viewBox="0 0 320 340">
+          <defs>
+            <linearGradient id="gGold" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffe892"/><stop offset=".5" stop-color="#f5c34b"/><stop offset="1" stop-color="#c48a18"/></linearGradient>
+            <linearGradient id="gBlue" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2c5fa8"/><stop offset="1" stop-color="#122b54"/></linearGradient>
+            <linearGradient id="gWood" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#6b4423"/><stop offset="1" stop-color="#3a2312"/></linearGradient>
+          </defs>
+          <!-- 外盾 -->
+          <path d="M160 12 L292 58 V172 C292 250 236 305 160 330 C84 305 28 250 28 172 V58 Z" fill="url(#gWood)" stroke="url(#gGold)" stroke-width="9"/>
+          <path d="M160 30 L275 70 V170 C275 238 226 288 160 311 C94 288 45 238 45 170 V70 Z" fill="url(#gBlue)" stroke="#d9a632" stroke-width="3"/>
+          <!-- 顶部缎带 -->
+          <path d="M52 92 L268 92 L268 128 L52 128 Z" fill="url(#gGold)"/>
+          <text fill="#3a2312" font-family="sans-serif" font-size="23" font-weight="900" letter-spacing="4" text-anchor="middle" x="160" y="119">花心世界</text>
+          <!-- 皇冠 -->
+          <path d="M96 158 L112 180 L160 140 L208 180 L224 158 L214 206 L106 206 Z" fill="url(#gGold)" stroke="#8a5a12" stroke-width="3"/>
+          <circle cx="96" cy="154" fill="#ffe892" r="7"/><circle cx="224" cy="154" fill="#ffe892" r="7"/><circle cx="160" cy="136" fill="#ffe892" r="8"/>
+          <!-- 交叉剑（置于心形下层） -->
+          <g stroke-linecap="round">
+            <path d="M78 238 L244 302" stroke="#dbe4f0" stroke-width="8"/>
+            <path d="M242 238 L76 302" stroke="#dbe4f0" stroke-width="8"/>
+            <path d="M78 238 L95 244" stroke="url(#gGold)" stroke-width="10"/>
+            <path d="M242 238 L225 244" stroke="url(#gGold)" stroke-width="10"/>
+            <circle cx="76" cy="236" fill="#ffe08a" r="6"/>
+            <circle cx="244" cy="236" fill="#ffe08a" r="6"/>
+            <path d="M72 296 L76 308 L82 298 Z" fill="#eef3fa"/>
+            <path d="M238 298 L244 308 L248 296 Z" fill="#eef3fa"/>
+          </g>
+          <!-- 花心 / 心形 -->
+          <path d="M160 265 C120 240 108 220 108 205 C108 190 124 183 138 192 C148 199 160 210 160 210 C160 210 172 199 182 192 C196 183 212 190 212 205 C212 220 200 240 160 265 Z" fill="#e8584f" stroke="#ffd76a" stroke-width="4"/>
+          <path d="M160 210 V255" stroke="#ffd76a" stroke-linecap="round" stroke-width="4"/>
+        </svg>
+        <div class="emblem-caption"><svg class="ico"><use href="#i-shield"></use></svg> 公开 · 透明 · 按笔可查</div>
+      </div>
+    </div>
+    <div aria-hidden="true" class="hero-wall"></div>
+  </section>
+
+  <!-- ============ 数据总览 ============ -->
+  <section aria-label="捐款总览" class="overview-section" id="overview">
+    <div class="wrap overview-grid" id="overviewGrid"><!-- JS 渲染 --></div>
+  </section>
+
+  <!-- ============ 运营背景 ============ -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-kicker">WHY WE PAY</span>
+        <h2>奶号为什么要挂服务器</h2>
+        <p>先把钱花在哪儿说清楚，再谈谁捐了多少。</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-main">
+          <div class="story-step">
+            <div class="step-num">01</div>
+            <div><h3>奶号是什么</h3><p>奶号是部落里专门用于随时捐兵、补资源的共享账号。它不靠某个人手动上线，而是长期挂在一台 24 小时运行的服务器 / 云主机上，谁需要兵谁就去取，部落战和冲杯期间尤其吃紧。</p></div>
+          </div>
+          <div class="story-step">
+            <div class="step-num">02</div>
+            <div><h3>为什么会有成本</h3><p>要让账号全天候在线，就得有稳定的机器、网络和续费。服务器按月或按年扣费，属于持续支出，不是一次性开销。这笔钱由部落管理层的首领们自愿分摊，不动用部落公共资金，也不向普通成员摊派。</p></div>
+          </div>
+          <div class="story-step">
+            <div class="step-num">03</div>
+            <div><h3>钱怎么管</h3><p>每笔到账都记下玩家名、金额、日期和用途备注，全部在此页面公示。月度成本约 25 元，结余顺延到后续月份，不挪作他用。任何人发现对不上，都可以直接在部落里提出核对。</p></div>
+          </div>
+        </div>
+
+        <aside class="cost-card">
+          <div class="cost-card-top"><svg class="ico"><use href="#i-server"></use></svg> 服务器月度成本</div>
+          <div class="cost-amount"><span class="cur">¥</span><strong id="costValue">25</strong><span class="unit">/ 月</span></div>
+          <div class="cost-bar"><span></span></div>
+          <ul class="cost-list">
+            <li><span>用途</span><b>奶号 24h 在线托管</b></li>
+            <li><span>付费方式</span><b>首领自愿分摊</b></li>
+            <li><span>结余处理</span><b>顺延抵扣次月</b></li>
+            <li><span>公示频率</span><b>每笔实时更新</b></li>
+          </ul>
+          <div class="cost-foot"><svg class="ico"><use href="#i-shield"></use></svg> 账目公开，接受全体成员监督</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 捐款汇总表 ============ -->
+  <section class="section section-tint" id="records">
+    <div class="wrap">
+      <div class="section-head section-head-row">
+        <div>
+          <span class="section-kicker">DONATION SUMMARY</span>
+          <h2>捐款汇总表</h2>
+          <p>按总金额降序排列，一行对应一位首领的汇总数据；捐款占比为该玩家总金额占全部捐款总额的比例。本表仅统计捐款收入，不统计服务器支出。</p>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-meta" id="summaryMeta"></div>
+
+        <div class="table-scroll">
+          <table class="rank-table sum-table">
+            <colgroup><col style="width:10%"><col style="width:30%"><col style="width:10%"><col style="width:10%"><col style="width:40%"></colgroup>
+            <thead><tr><th>贡献度排名</th><th>部落首领</th><th>部落职务</th><th class="rk-r">总金额</th><th class="rk-r">捐款占比</th></tr></thead>
+            <tbody id="summaryBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 捐款明细表 ============ -->
+  <section class="section" id="ledger">
+    <div class="wrap">
+      <div class="section-head section-head-row">
+        <div>
+          <span class="section-kicker">EVERY SINGLE RECORD</span>
+          <h2>捐款明细表</h2>
+          <p>一行对应一条捐款记录，按时间倒序排列（后捐款的记录排在最上面），可按玩家名、备注或日期搜索。</p>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <div class="toolbar">
+          <label class="search-box">
+            <svg class="ico"><use href="#i-search"></use></svg>
+            <input autocomplete="off" id="searchInput" placeholder="搜索玩家名、备注或日期…" type="search">
+          </label>
+          <span class="data-status" id="dataStatus" hidden></span>
+        </div>
+        <div class="table-meta" id="tableMeta"></div>
+        <div class="table-scroll">
+          <table class="ledger-table">
+            <colgroup><col style="width:30%"><col style="width:10%"><col style="width:10%"><col style="width:30%"><col style="width:20%"></colgroup>
+            <thead><tr><th>部落首领</th><th>部落职务</th><th>捐款金额</th><th>捐款时间</th><th>备注</th></tr></thead>
+            <tbody id="ledgerBody"></tbody>
+          </table>
+          <div class="empty-state" hidden id="emptyState">没有匹配的记录，换个关键词试试。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 统计汇总 ============ -->
+  <section class="section" id="stats">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-kicker">BY THE NUMBERS</span>
+        <h2>统计汇总</h2>
+        <p>按月分布看清捐款节奏，仅统计捐款收入，不统计服务器支出。</p>
+      </div>
+
+      <div class="stats-grid">
+        <article class="panel">
+          <div class="panel-head"><h3><svg class="ico"><use href="#i-chart"></use></svg> 月度捐款趋势</h3><span id="monthRange"></span></div>
+          <div class="chart-wrap" id="monthChart"></div>
+          <div class="chart-legend"><span><i class="lg-bar"></i>当月捐款（元）</span></div>
+        </article>
+      </div>
+
+      <div class="balance-strip" id="balanceStrip"></div>
+    </div>
+  </section>
+
+  <!-- ============ 公开承诺 ============ -->
+  <section class="pledge">
+    <div class="wrap pledge-inner">
+      <div class="pledge-icon"><svg class="ico"><use href="#i-shield"></use></svg></div>
+      <div><h3>账目全公开，浏览零门槛</h3><p>右上角登录只是给维护者留的入口，属于可选功能。不登录也能看完首页、每一笔明细和全部统计，不会跳转、不会拦截、不会遮挡内容。</p></div>
+      <a class="btn btn-gold" href="#ledger">现在就去核对 <svg class="ico"><use href="#i-arrow"></use></svg></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand"><svg aria-hidden="true" viewBox="0 0 48 48"><path d="M24 3l18 6.5v14c0 11-8 18-18 21.5C14 41.5 6 34.5 6 23.5v-14L24 3z" fill="#f5c34b"/><text fill="#1d3c6e" font-family="sans-serif" font-size="19" font-weight="900" text-anchor="middle" x="24" y="31">花</text></svg><div><strong>花心世界</strong><span>奶号运营 · 捐款公示</span></div></div>
+    <div class="footer-meta"><span id="footerUpdated"></span><span>本页为部落内部财务公示，非官方站点，与 Supercell 无关。</span></div>
+  </div>
+</footer>
+
+<!-- ============ 登录弹窗（可选，纯前端标记身份） ============ -->
+<div class="modal" hidden id="loginModal">
+  <div class="modal-mask" data-close></div>
+  <div aria-labelledby="modalTitle" aria-modal="true" class="modal-box" role="dialog">
+    <button aria-label="关闭" class="modal-close" data-close type="button"><svg class="ico"><use href="#i-close"></use></svg></button>
+    <div class="modal-badge"><svg class="ico"><use href="#i-shield"></use></svg></div>
+    <h3 id="modalTitle">可选登录</h3>
+    <p class="modal-tip">登录仅供维护者标记身份，<b>不是浏览的前提</b>。所有内容对访客完整开放，直接关闭即可继续查看。</p>
+    <form id="loginForm">
+      <label>玩家名<input id="loginName" maxlength="20" placeholder="例如：花心丶冷月" required type="text"></label>
+      <label>口令<input id="loginPass" maxlength="30" placeholder="请输入登录口令" type="password"></label>
+      <button class="btn btn-gold btn-block" type="submit">登 录</button>
+    </form>
+    <button class="modal-skip" data-close type="button">不用了，直接浏览</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+ * 花心世界 · 奶号运营捐款数据
+ * ------------------------------------------------------------
+ * 新增一笔捐款：在 DONATION_RECORDS 数组里加一项即可，顺序随意，
+ * 页面会自动按日期重新排序并刷新所有汇总与图表。
+ * 字段：player 玩家名 / role 职务 / amount 金额(元) / date 日期 / note 备注
+ * 说明：本表仅记录捐款收入，不记录服务器支出。
+ * ============================================================ */
+
+window.CLAN_CONFIG = {
+  name: '花心世界',
+  tag: '#部落标签',
+  serverCostPerMonth: 25,      // 每月服务器成本（元），仅用于运营背景说明
+  currency: '¥',
+  updatedAt: '2026-11-12'
+};
+
+/* ============================================================
+ * 在线数据源（云端同步）
+ * ------------------------------------------------------------
+ * DATA_SOURCE  填一个“可直接下载”的 JSON 或 CSV 链接，页面会
+ *              自动拉取并覆盖下方内置明细。留空 = 仅用内置数据。
+ *              链接要求：浏览器可直接打开、无需登录、允许跨域。
+ *              推荐放 GitHub 仓库 raw 链接，或与你网站同域的
+ *              data.json / donations.csv。
+ * DATA_REFRESH_MIN  自动静默刷新间隔（分钟），0 = 不自动刷新。
+ *
+ * 临时切换数据源不用改代码：页面网址后加 ?src=链接 即可。
+ * 详见同目录《部署与数据同步说明.md》。
+ * ============================================================ */
+window.DATA_SOURCE = './donations.csv';   // 同目录 CSV：改这份文件即可更新明细
+window.DATA_REFRESH_MIN = 5;          // 每 5 分钟静默刷新一次
+
+window.DONATION_RECORDS = [
+  { id: 36, player: '花心丶清欢', role: '长老',   amount: 20,  date: '2026-11-10', note: '双十一加捐' },
+  { id: 35, player: '花心丶冷月', role: '首领',   amount: 50,  date: '2026-11-08', note: '11 月费用分摊' },
+  { id: 34, player: '花心丶小七', role: '副首领', amount: 25,  date: '2026-11-06', note: '11 月费用分摊' },
+  { id: 33, player: '花心丶战神', role: '副首领', amount: 25,  date: '2026-11-05', note: '11 月费用分摊' },
+  { id: 32, player: '花心丶阿哲', role: '长老',   amount: 30,  date: '2026-10-09', note: '10 月费用分摊' },
+  { id: 31, player: '花心丶孤影', role: '长老',   amount: 20,  date: '2026-10-07', note: '10 月费用分摊' },
+  { id: 30, player: '花心丶老王', role: '长老',   amount: 20,  date: '2026-10-03', note: '10 月费用分摊' },
+  { id: 29, player: '花心丶冷月', role: '首领',   amount: 100, date: '2026-09-28', note: '四季度预缴（10–12 月）' },
+  { id: 28, player: '花心丶战神', role: '副首领', amount: 25,  date: '2026-09-06', note: '9 月费用分摊' },
+  { id: 27, player: '花心丶小七', role: '副首领', amount: 25,  date: '2026-09-04', note: '9 月费用分摊' },
+  { id: 26, player: '花心丶阿哲', role: '长老',   amount: 25,  date: '2026-08-11', note: '8 月费用分摊' },
+  { id: 25, player: '花心丶老王', role: '长老',   amount: 50,  date: '2026-08-05', note: '8 月费用分摊 + 补缴 7 月' },
+  { id: 24, player: '花心丶孤影', role: '长老',   amount: 20,  date: '2026-08-02', note: '8 月费用分摊' },
+  { id: 23, player: '花心丶冷月', role: '首领',   amount: 25,  date: '2026-07-08', note: '7 月费用分摊' },
+  { id: 22, player: '花心丶小七', role: '副首领', amount: 25,  date: '2026-07-05', note: '7 月费用分摊' },
+  { id: 21, player: '花心丶战神', role: '副首领', amount: 30,  date: '2026-07-01', note: '7 月费用分摊' },
+  { id: 20, player: '花心丶阿哲', role: '长老',   amount: 25,  date: '2026-06-09', note: '6 月费用分摊' },
+  { id: 19, player: '花心丶孤影', role: '长老',   amount: 20,  date: '2026-06-06', note: '6 月费用分摊' },
+  { id: 18, player: '花心丶老王', role: '长老',   amount: 20,  date: '2026-06-03', note: '6 月费用分摊' },
+  { id: 17, player: '花心丶清欢', role: '长老',   amount: 30,  date: '2026-05-20', note: '生日月加捐' },
+  { id: 16, player: '花心丶冷月', role: '首领',   amount: 50,  date: '2026-05-10', note: '5 月费用分摊 + 部落战备用' },
+  { id: 15, player: '花心丶战神', role: '副首领', amount: 25,  date: '2026-05-06', note: '5 月费用分摊' },
+  { id: 14, player: '花心丶小七', role: '副首领', amount: 25,  date: '2026-05-02', note: '5 月费用分摊' },
+  { id: 13, player: '花心丶阿哲', role: '长老',   amount: 25,  date: '2026-04-08', note: '4 月费用分摊' },
+  { id: 12, player: '花心丶老王', role: '长老',   amount: 25,  date: '2026-04-05', note: '4 月费用分摊' },
+  { id: 11, player: '花心丶孤影', role: '长老',   amount: 20,  date: '2026-04-01', note: '4 月费用分摊' },
+  { id: 10, player: '花心丶冷月', role: '首领',   amount: 75,  date: '2026-03-09', note: '二季度预缴（4–6 月）' },
+  { id: 9,  player: '花心丶战神', role: '副首领', amount: 25,  date: '2026-03-05', note: '3 月费用分摊' },
+  { id: 8,  player: '花心丶小七', role: '副首领', amount: 25,  date: '2026-03-02', note: '3 月费用分摊' },
+  { id: 7,  player: '花心丶阿哲', role: '长老',   amount: 25,  date: '2026-02-08', note: '2 月费用分摊' },
+  { id: 6,  player: '花心丶老王', role: '长老',   amount: 20,  date: '2026-02-05', note: '2 月费用分摊' },
+  { id: 5,  player: '花心丶孤影', role: '长老',   amount: 20,  date: '2026-02-02', note: '2 月费用分摊' },
+  { id: 4,  player: '花心丶清欢', role: '长老',   amount: 20,  date: '2026-01-28', note: '1 月补充分摊' },
+  { id: 3,  player: '花心丶冷月', role: '首领',   amount: 100, date: '2026-01-12', note: '首月费用 + 环境搭建' },
+  { id: 2,  player: '花心丶战神', role: '副首领', amount: 25,  date: '2026-01-10', note: '首月费用分摊' },
+  { id: 1,  player: '花心丶小七', role: '副首领', amount: 25,  date: '2026-01-08', note: '首月费用分摊' }
+];
+
+</script>
+<script>
+/* ============================================================
+   花心世界 · 奶号运营捐款公示 — 交互逻辑
+   纯静态、无后端、无依赖。数据来源：
+   1) 页面内置明细（保底）；2) 在线 JSON/CSV 链接（DATA_SOURCE 或 ?src=）。
+   汇总表、统计图全部由明细实时计算排序，数据源只存明细。
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var CFG = window.CLAN_CONFIG || {};
+  var RAW = (window.DONATION_RECORDS || []).slice();
+  var COST = Number(CFG.serverCostPerMonth) || 25;
+  var CUR = CFG.currency || '¥';
+
+  function normalize(list) {
+    return (list || []).map(function (r, i) {
+      var amount = Number(String(r.amount == null ? '' : r.amount).replace(/[¥￥,，\s]/g, ''));
+      return {
+        id: r.id || i + 1,
+        player: String(r.player || r.name || '未署名'),
+        role: String(r.role || '成员'),
+        amount: isNaN(amount) ? 0 : amount,
+        date: String(r.date || ''),
+        note: String(r.note == null || r.note === '' ? '—' : r.note)
+      };
+    }).filter(function (r) { return r.player && r.date; })
+      .sort(function (a, b) { return b.date.localeCompare(a.date) || b.id - a.id; });
+  }
+
+  var records = normalize(RAW);
+  var remoteUpdatedAt = '';
+
+  var state = { q: '' };
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  };
+  var money = function (n) { return (Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, ''); };
+  var sum = function (arr) { return arr.reduce(function (t, r) { return t + r.amount; }, 0); };
+  var monthKey = function (d) { return d.slice(0, 7); };
+  var uniq = function (arr) { return arr.filter(function (v, i, a) { return a.indexOf(v) === i; }); };
+  var AVATAR_COLORS = ['#2c5592', '#b2761a', '#2f9c72', '#a4538b', '#c05a45', '#4a7a9b', '#7a6433', '#5b6bb5'];
+
+  function avatarColor(name) {
+    var h = 0;
+    for (var i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+    return AVATAR_COLORS[h % AVATAR_COLORS.length];
+  }
+  function roleClass(role) {
+    if (role.indexOf('副') === 0) return 'fu';
+    if (role.indexOf('长') === 0) return 'zhang';
+    return '';
+  }
+
+  /* ---------------- 在线数据源（方案 C：云端同步） ---------------- */
+  function queryParam(key) {
+    var m = new RegExp('[?&]' + key + '=([^&]*)').exec(location.search);
+    return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : '';
+  }
+  var SOURCE = queryParam('src') || String(window.DATA_SOURCE || '').trim();
+  var REFRESH_MIN = Number(window.DATA_REFRESH_MIN);
+  if (!(REFRESH_MIN > 0)) REFRESH_MIN = 0;
+
+  var FIELD_MAP = {
+    'player': 'player', 'name': 'player', '玩家': 'player', '玩家名': 'player', '首领': 'player', '部落首领': 'player',
+    'role': 'role', '职务': 'role', '部落职务': 'role',
+    'amount': 'amount', '金额': 'amount', '捐款金额': 'amount',
+    'date': 'date', 'time': 'date', '日期': 'date', '时间': 'date', '捐款时间': 'date',
+    'note': 'note', '备注': 'note'
+  };
+
+  function parseCSV(text) {
+    text = String(text).replace(/^\uFEFF/, '');
+    var rows = [], row = [], field = '', inQ = false, i, c;
+    for (i = 0; i < text.length; i++) {
+      c = text.charAt(i);
+      if (inQ) {
+        if (c === '"') {
+          if (text.charAt(i + 1) === '"') { field += '"'; i++; } else { inQ = false; }
+        } else { field += c; }
+      } else if (c === '"') { inQ = true; }
+      else if (c === ',') { row.push(field); field = ''; }
+      else if (c === '\r') { /* 跳过，等待 \n */ }
+      else if (c === '\n') { row.push(field); field = ''; if (row.join('') !== '') rows.push(row); row = []; }
+      else { field += c; }
+    }
+    row.push(field);
+    if (row.join('') !== '') rows.push(row);
+    if (!rows.length) return [];
+    var head = rows[0].map(function (h) { return FIELD_MAP[String(h).trim().toLowerCase()] || ''; });
+    var out = [];
+    for (i = 1; i < rows.length; i++) {
+      if (rows[i].join('') === '') continue;
+      var obj = {};
+      for (var j = 0; j < head.length; j++) { if (head[j]) obj[head[j]] = rows[i][j]; }
+      if (obj.player) out.push(obj);
+    }
+    return out;
+  }
+
+  function parsePayload(text) {
+    text = String(text).replace(/^\uFEFF/, '').trim();
+    if (text.charAt(0) === '{' || text.charAt(0) === '[') {
+      var data = JSON.parse(text);
+      if (data && !Array.isArray(data)) {
+        var arr = data.records || data.data || data.list || [];
+        return { rows: arr, updatedAt: data.updatedAt || data.updated_at || '' };
+      }
+      return { rows: data, updatedAt: '' };
+    }
+    return { rows: parseCSV(text), updatedAt: '' };
+  }
+
+  function setStatus(kind, text) {
+    var el = $('dataStatus');
+    if (!el) return;
+    if (!text) { el.hidden = true; return; }
+    el.hidden = false;
+    el.className = 'data-status ' + kind;
+    el.textContent = text;
+  }
+
+  function currentUpdated() {
+    return remoteUpdatedAt || (records.length ? records[0].date : '') || CFG.updatedAt ||
+      new Date().toISOString().slice(0, 10);
+  }
+
+  function applyRemote(payload) {
+    var rows = normalize(payload.rows);
+    if (!rows.length) throw new Error('数据源解析结果为空');
+    records = rows;
+    remoteUpdatedAt = payload.updatedAt || (records.length ? records[0].date : '');
+    renderAll();
+    setStatus('ok', '在线数据已同步 · ' + currentUpdated());
+  }
+
+  function fetchRemote() {
+    if (!SOURCE) return;
+    var url = SOURCE + (SOURCE.indexOf('?') > -1 ? '&' : '?') + '_t=' + Date.now();
+    if (typeof fetch !== 'function') { setStatus('err', '当前浏览器不支持在线同步'); return; }
+    fetch(url, { credentials: 'omit', cache: 'no-store' })
+      .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.text(); })
+      .then(function (text) { applyRemote(parsePayload(text)); })
+      .catch(function (err) {
+        setStatus('err', '在线源暂不可用，显示内置数据');
+        try { console.warn('[数据源] 拉取失败：' + (err && err.message ? err.message : err)); } catch (e) {}
+      });
+  }
+
+  function startAutoRefresh() {
+    if (!SOURCE || !REFRESH_MIN) return;
+    setInterval(fetchRemote, REFRESH_MIN * 60000);
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) fetchRemote();
+    });
+  }
+
+  /* ---------------- 总览卡片（仅统计捐款收入） ---------------- */
+  function renderOverview() {
+    var total = sum(records);
+    var players = uniq(records.map(function (r) { return r.player; })).length;
+    var monthCount = uniq(records.map(function (r) { return monthKey(r.date); })).length;
+    var avg = monthCount ? total / monthCount : 0;
+    var top = records.slice().sort(function (a, b) { return b.amount - a.amount || b.date.localeCompare(a.date); })[0] || { amount: 0, player: '—', date: '' };
+    var cards = [
+      { icon: 'i-coin', label: '累计捐款总额', value: CUR + money(total), hint: '自首笔记录至今 · 全部到账' },
+      { icon: 'i-crown', label: '参与首领', value: players + ' 位', hint: '自愿分摊，未向普通成员摊派' },
+      { icon: 'i-list', label: '公开记录', value: records.length + ' 笔', hint: '逐笔可查，含金额与备注' },
+      { icon: 'i-chart', label: '单笔最高捐款', value: CUR + money(top.amount), hint: top.player + ' · ' + top.date }
+    ];
+    $('overviewGrid').innerHTML = cards.map(function (c) {
+      return '<div class="stat-card reveal">' +
+        '<div class="stat-label"><svg class="ico"><use href="#' + c.icon + '"></use></svg>' + c.label + '</div>' +
+        '<div class="stat-value">' + (c.icon === 'i-coin' ? '<span class="cur">' + CUR + '</span>' + money(total) : c.value) + '</div>' +
+        '<div class="stat-hint">' + esc(c.hint) + '</div></div>';
+    }).join('');
+    $('costValue').textContent = COST;
+    $('footerUpdated').innerHTML = '数据更新至 <strong class="date-strong date-strong-light">' + esc(currentUpdated()) + '</strong> · 共 ' + records.length + ' 笔记录';
+
+    // 捐款合计说明（仅统计捐款，不统计支出）
+    $('balanceStrip').innerHTML =
+      '<div class="bs-icon"><svg class="ico"><use href="#i-coin"></use></svg></div>' +
+      '<p>累计到账捐款 <strong>' + CUR + money(total) + '</strong>，共 <strong>' + records.length + '</strong> 笔，覆盖 <strong>' + monthCount + '</strong> 个自然月，' +
+      '月均约 <span class="bs-num">' + CUR + money(avg) + '</span>。本页仅统计捐款收入，服务器支出不在表内核算。</p>';
+  }
+
+  /* ---------------- 捐款明细表（逐笔，时间倒序） ---------------- */
+  function filteredRecords() {
+    var q = state.q.trim().toLowerCase();
+    var list = records;
+    if (q) {
+      list = records.filter(function (r) {
+        return (r.player + ' ' + r.role + ' ' + r.note + ' ' + r.date).toLowerCase().indexOf(q) > -1;
+      });
+    }
+    return list.slice().sort(function (a, b) { return b.date.localeCompare(a.date) || b.id - a.id; });
+  }
+
+  function renderTable() {
+    var list = filteredRecords();
+    $('ledgerBody').innerHTML = list.map(function (r) {
+      var initial = r.player.replace(/^花心丶/, '').charAt(0) || '花';
+      return '<tr class="rec-row">' +
+        '<td data-label="部落首领"><span class="player-cell">' +
+          '<span class="avatar" style="background:' + avatarColor(r.player) + '">' + esc(initial) + '</span>' +
+          '<span class="player-name">' + esc(r.player) + '</span></span></td>' +
+        '<td data-label="部落职务"><span class="role-tag ' + roleClass(r.role) + '">' + esc(r.role) + '</span></td>' +
+        '<td data-label="捐款金额"><span class="amount-cell"><span class="c">' + CUR + '</span>' + money(r.amount) + '</span></td>' +
+        '<td data-label="捐款时间"><strong class="date-strong">' + esc(r.date) + '</strong></td>' +
+        '<td data-label="备注"><span class="note-cell">' + esc(r.note) + '</span></td>' +
+      '</tr>';
+    }).join('');
+
+    $('emptyState').hidden = list.length !== 0;
+    $('tableMeta').innerHTML = '共 <b>' + list.length + '</b> 笔记录 · 合计 <b>' + CUR + money(sum(list)) + '</b>，按捐款时间倒序排列';
+  }
+
+  function initFilters() {
+    var timer;
+    $('searchInput').addEventListener('input', function (e) {
+      clearTimeout(timer);
+      timer = setTimeout(function () { state.q = e.target.value; renderTable(); }, 120);
+    });
+  }
+
+  /* ---------------- 捐款汇总表（按玩家汇总，总金额降序） ---------------- */
+  function renderSummary() {
+    var byPlayer = {};
+    records.forEach(function (r) {
+      if (!byPlayer[r.player]) byPlayer[r.player] = { name: r.player, role: r.role, total: 0 };
+      byPlayer[r.player].total += r.amount;
+    });
+    var rows = Object.keys(byPlayer).map(function (k) { return byPlayer[k]; })
+      .sort(function (a, b) { return b.total - a.total; });
+    var grand = sum(records);
+    $('summaryMeta').innerHTML = '共 <b>' + rows.length + '</b> 位首领参与捐款 · 累计合计 <b>' + CUR + money(grand) + '</b>，按总金额降序排列';
+    $('summaryBody').innerHTML = rows.map(function (r, i) {
+      var pct = grand ? (r.total / grand * 100).toFixed(1) : '0.0';
+      var initial = r.name.replace(/^花心丶/, '').charAt(0) || '花';
+      var topCls = i < 3 ? ' top' + (i + 1) : '';
+      return '<tr class="rk-row' + topCls + '">' +
+        '<td class="rk-no"><span class="rk-badge">' + (i + 1) + '</span></td>' +
+        '<td data-label="部落首领"><span class="player-cell"><span class="rk-badge rk-chip">' + (i + 1) + '</span>' +
+          '<span class="avatar sm" style="background:' + avatarColor(r.name) + '">' + esc(initial) + '</span>' +
+          '<span class="player-name">' + esc(r.name) + '</span></span></td>' +
+        '<td data-label="部落职务"><span class="role-tag ' + roleClass(r.role) + '">' + esc(r.role) + '</span></td>' +
+        '<td data-label="总金额" class="rk-total">' + CUR + money(r.total) + '</td>' +
+        '<td data-label="捐款占比" class="rk-pct"><span class="pct-bar"><i style="width:' + pct + '%"></i></span>' + pct + '%</td>' +
+      '</tr>';
+    }).join('');
+  }
+
+  /* ---------------- 统计（月度捐款趋势，仅统计捐款） ---------------- */
+  function renderStats() {
+
+    // 月度趋势：按有记录的月份聚合（最多 12 个月）
+    var byMonth = {};
+    records.forEach(function (r) { var k = monthKey(r.date); byMonth[k] = (byMonth[k] || 0) + r.amount; });
+    var keys = Object.keys(byMonth).sort().slice(-12);
+    var vals = keys.map(function (k) { return byMonth[k]; });
+    var peak = Math.max.apply(null, vals.concat([1]));
+    $('monthRange').innerHTML = keys.length ? '<strong class="date-strong">' + keys[0] + '</strong> — <strong class="date-strong">' + keys[keys.length - 1] + '</strong>' : '';
+    $('monthChart').innerHTML =
+      keys.map(function (k, i) {
+        var h = (vals[i] / peak * 100).toFixed(2);
+        return '<div class="chart-col" title="' + k + '：' + CUR + money(vals[i]) + '">' +
+          '<span class="chart-val">' + money(vals[i]) + '</span>' +
+          '<div class="chart-bar" style="height:' + h + '%"></div>' +
+          '<span class="chart-label full">' + k.slice(2).replace('-', '/') + '</span>' +
+          '<span class="chart-label short">' + Number(k.slice(5)) + '月</span></div>';
+      }).join('');
+  }
+
+  /* ---------------- 登录（可选，绝不拦截浏览） ---------------- */
+  var LOGIN_KEY = 'hxsj_player';
+  function currentPlayer() {
+    try { return localStorage.getItem(LOGIN_KEY) || ''; } catch (e) { return ''; }
+  }
+  function renderLoginState() {
+    var name = currentPlayer();
+    $('loginLabel').textContent = name || '登录';
+    var box = document.querySelector('.modal-box');
+    var panel = $('loggedPanel');
+    var form = $('loginForm');
+    var title = $('modalTitle');
+    var tip = document.querySelector('.modal-tip');
+    if (name) {
+      title.textContent = '当前身份';
+      tip.innerHTML = '已登录为 <b id="loggedName"></b>。这只是维护者的身份标记，不影响任何浏览权限。';
+      $('loggedName').textContent = name;
+      form.hidden = true;
+      if (!panel) {
+        panel = document.createElement('button');
+        panel.id = 'loggedPanel';
+        panel.type = 'button';
+        panel.className = 'btn btn-ghost btn-block';
+        panel.style.cssText = 'background:#f4eee0;color:#5c5344;border:1.5px solid #e9dfc9;box-shadow:none';
+        panel.textContent = '退出登录';
+        panel.addEventListener('click', function () {
+          try { localStorage.removeItem(LOGIN_KEY); } catch (e) {}
+          renderLoginState();
+          closeModal();
+        });
+        box.insertBefore(panel, document.querySelector('.modal-skip'));
+      }
+      panel.hidden = false;
+      document.querySelector('.modal-skip').textContent = '继续浏览';
+    } else {
+      title.textContent = '可选登录';
+      tip.innerHTML = '登录仅供维护者标记身份，<b>不是浏览的前提</b>。所有内容对访客完整开放，直接关闭即可继续查看。';
+      form.hidden = false;
+      if (panel) panel.hidden = true;
+      document.querySelector('.modal-skip').textContent = '不用了，直接浏览';
+    }
+  }
+  function openModal() { renderLoginState(); $('loginModal').hidden = false; document.body.style.overflow = 'hidden'; }
+  function closeModal() { $('loginModal').hidden = true; document.body.style.overflow = ''; }
+  function initLogin() {
+    $('loginBtn').addEventListener('click', openModal);
+    $('loginModal').addEventListener('click', function (e) {
+      if (e.target.hasAttribute('data-close')) closeModal();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('loginModal').hidden) closeModal(); });
+    $('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = $('loginName').value.trim();
+      if (!name) return;
+      try { localStorage.setItem(LOGIN_KEY, name); } catch (err) {}
+      renderLoginState();
+      closeModal();
+    });
+    renderLoginState();
+  }
+
+  /* ---------------- 导航 / 动画 ---------------- */
+  function initNav() {
+    var links = $('navLinks');
+    var btn = $('menuBtn');
+    btn.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    Array.prototype.forEach.call(links.querySelectorAll('a'), function (a) {
+      a.addEventListener('click', function () { links.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); });
+    });
+    var anchors = Array.prototype.slice.call(links.querySelectorAll('a'));
+    if ('IntersectionObserver' in window) {
+      var navObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          anchors.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id); });
+        });
+      }, { rootMargin: '-30% 0px -60% 0px' });
+      ['home', 'about', 'records', 'ledger', 'stats'].forEach(function (id) { var el = $(id); if (el) navObs.observe(el); });
+    }
+  }
+  function initReveal() {
+    var els = document.querySelectorAll('.section-head, .story-step, .cost-card, .table-card, .panel, .balance-strip, .stat-card, .pledge-inner');
+    if (!('IntersectionObserver' in window)) {
+      Array.prototype.forEach.call(els, function (el) { el.classList.add('in'); });
+      return;
+    }
+    Array.prototype.forEach.call(els, function (el) { el.classList.add('reveal'); });
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); obs.unobserve(en.target); }
+      });
+    }, { threshold: .08, rootMargin: '0px 0px -30px 0px' });
+    Array.prototype.forEach.call(els, function (el) { obs.observe(el); });
+  }
+
+  /* ---------------- 启动 ---------------- */
+  function renderAll() {
+    renderOverview();
+    renderSummary();
+    renderTable();
+    renderStats();
+  }
+  renderAll();
+  initFilters();
+  initLogin();
+  initNav();
+  initReveal();
+  fetchRemote();          // 有数据源则拉取在线明细并整体重渲染；失败自动回退内置数据
+  startAutoRefresh();     // 定时 + 回到页面时静默刷新
+})();
+
+</script>
+</body>
+</html>
