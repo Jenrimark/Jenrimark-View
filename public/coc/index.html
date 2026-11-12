@@ -83,7 +83,7 @@ ul{margin:0;padding:0;list-style:none}
 .nav-inner{display:flex;align-items:center;gap:24px;min-height:72px}
 .brand{display:flex;align-items:center;gap:11px;flex:none}
 .brand-badge{width:42px;height:42px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.18))}
-.brand-badge svg{width:100%;height:100%}
+.brand-badge img,.brand-badge svg{width:100%;height:100%;object-fit:contain}
 .brand-text{display:flex;flex-direction:column;line-height:1.15}
 .brand-text strong{font-size:19px;font-weight:900;letter-spacing:1px;color:var(--blue-deep)}
 .brand-text small{font-size:9px;letter-spacing:2.2px;color:var(--gold-deep);font-weight:800;margin-top:3px}
@@ -272,17 +272,14 @@ ul{margin:0;padding:0;list-style:none}
 .table-meta b{color:var(--blue-deep)}
 .ledger-table{width:100%;border-collapse:collapse;font-size:14.5px;table-layout:fixed}
 .ledger-table thead th{
-  text-align:left;padding:13px 20px;font-size:12px;font-weight:800;letter-spacing:1.2px;color:#8b7c62;
+  text-align:center;padding:13px 20px;font-size:12px;font-weight:800;letter-spacing:1.2px;color:#8b7c62;
   background:#fdf8ec;border-bottom:2px solid var(--line);white-space:nowrap;
 }
-.ledger-table th:nth-child(3),.ledger-table td:nth-child(3){text-align:right}
-.ledger-table th:nth-child(4),.ledger-table td:nth-child(4){text-align:center}
-.ledger-table tbody td{padding:14px 20px;border-bottom:1px solid #f1ead9;vertical-align:middle;overflow-wrap:anywhere}
+.ledger-table tbody td{padding:14px 20px;border-bottom:1px solid #f1ead9;vertical-align:middle;overflow-wrap:anywhere;text-align:center}
 .ledger-table tbody tr:last-child td{border-bottom:0}
 .ledger-table tbody tr{transition:background .15s}
 .ledger-table tbody tr:hover{background:#fffbf0}
-.player-cell{display:flex;align-items:center;gap:10px}
-.avatar{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:900;font-size:15px;color:#fff;flex:none;border-bottom:2px solid rgba(0,0,0,.18)}
+.player-cell{display:flex;align-items:center;justify-content:center;gap:10px}
 .player-name{font-weight:700;color:var(--blue-deep);white-space:nowrap}
 .role-tag{font-size:10.5px;font-weight:700;color:#8a6416;background:#fff2cd;border:1px solid #eed69b;padding:1px 7px;border-radius:100px;margin-left:7px;white-space:nowrap}
 .role-tag.fu{color:#2c5592;background:#e8f0fb;border-color:#cbdcf3}
@@ -320,9 +317,8 @@ ul{margin:0;padding:0;list-style:none}
 .rank-sub{font-size:11.5px;color:#a1957e;margin-top:4px}
 /* ---------- 捐款汇总表 ---------- */
 .rank-table{width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed}
-.rank-table thead th{text-align:left;padding:11px 12px;font-size:11.5px;font-weight:800;letter-spacing:1.1px;color:#8b7c62;background:#fdf8ec;border-bottom:2px solid var(--line);white-space:nowrap}
-.rank-table thead th.rk-r{text-align:right}
-.rank-table tbody td{padding:13px 12px;border-bottom:1px solid #f1ead9;vertical-align:middle}
+.rank-table thead th{text-align:center;padding:11px 12px;font-size:11.5px;font-weight:800;letter-spacing:1.1px;color:#8b7c62;background:#fdf8ec;border-bottom:2px solid var(--line);white-space:nowrap}
+.rank-table tbody td{padding:13px 12px;border-bottom:1px solid #f1ead9;vertical-align:middle;text-align:center}
 .rank-table tbody tr:last-child td{border-bottom:0}
 .rank-table tbody tr:hover{background:#fffbf0}
 .rk-badge{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:#f2ead6;color:#8a7a5c;font-weight:900;font-size:12px}
@@ -330,8 +326,7 @@ ul{margin:0;padding:0;list-style:none}
 .rk-row.top2 .rk-badge{background:#e3e9f1;color:#4c5f7a}
 .rk-row.top3 .rk-badge{background:#f0dcc4;color:#8a6238}
 .rk-chip{display:none}
-.avatar.sm{width:28px;height:28px;border-radius:8px;font-size:12.5px}
-.rk-count,.rk-total,.rk-pct{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.rk-count,.rk-total,.rk-pct{font-variant-numeric:tabular-nums;text-align:center;white-space:nowrap}
 .rk-count{color:#5c5344;font-weight:600}
 .rk-total{font-weight:900;color:#b2761a;font-size:15px}
 .rk-pct{color:#6d6252;font-size:12.5px}
@@ -370,7 +365,7 @@ ul{margin:0;padding:0;list-style:none}
 .site-footer{background:#0e1c33;color:#8fa5c4;padding:30px 0;font-size:12.5px}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .footer-brand{display:flex;align-items:center;gap:11px;color:#fff}
-.footer-brand svg{width:38px;height:38px}
+.footer-brand img{width:38px;height:38px;object-fit:contain}
 .footer-brand div{display:flex;flex-direction:column}
 .footer-brand strong{font-size:15px;font-weight:800}
 .footer-brand span{font-size:11px;color:#8fa5c4}
@@ -496,7 +491,6 @@ ul{margin:0;padding:0;list-style:none}
   .rk-row.top1 .rk-chip{background:linear-gradient(180deg,#ffe08a,#eab336);color:#5a3c08}
   .rk-row.top2 .rk-chip{background:#e3e9f1;color:#4c5f7a}
   .rk-row.top3 .rk-chip{background:#f0dcc4;color:#8a6238}
-  .avatar.sm{width:26px;height:26px;font-size:11.5px}
   .pct-bar{width:52px}
   .rank-table .player-cell{flex-wrap:nowrap;justify-content:flex-end;min-width:0}
   .rank-table .player-name{overflow:hidden;text-overflow:ellipsis}
@@ -555,7 +549,7 @@ ul{margin:0;padding:0;list-style:none}
   <div class="wrap nav-inner">
     <a aria-label="花心世界 首页" class="brand" href="#home">
       <span aria-hidden="true" class="brand-badge">
-        <svg viewBox="0 0 48 48"><path d="M24 3l18 6.5v14c0 11-8 18-18 21.5C14 41.5 6 34.5 6 23.5v-14L24 3z" fill="#f5c34b" stroke="#8a5a12" stroke-width="2"/><path d="M24 8l13 4.7v10.8c0 8-5.8 13.2-13 15.8-7.2-2.6-13-7.8-13-15.8V12.7L24 8z" fill="#1d3c6e"/><text fill="#ffd76a" font-family="sans-serif" font-size="19" font-weight="900" text-anchor="middle" x="24" y="31">花</text></svg>
+        <img src="./clan-badge.png" alt="">
       </span>
       <span class="brand-text"><strong>花心世界</strong><small>DONATION LEDGER</small></span>
     </a>
@@ -599,36 +593,7 @@ ul{margin:0;padding:0;list-style:none}
 
       <div aria-hidden="true" class="hero-emblem">
         <div class="emblem-rays"></div>
-        <svg class="emblem-svg" viewBox="0 0 320 340">
-          <defs>
-            <linearGradient id="gGold" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffe892"/><stop offset=".5" stop-color="#f5c34b"/><stop offset="1" stop-color="#c48a18"/></linearGradient>
-            <linearGradient id="gBlue" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2c5fa8"/><stop offset="1" stop-color="#122b54"/></linearGradient>
-            <linearGradient id="gWood" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#6b4423"/><stop offset="1" stop-color="#3a2312"/></linearGradient>
-          </defs>
-          <!-- 外盾 -->
-          <path d="M160 12 L292 58 V172 C292 250 236 305 160 330 C84 305 28 250 28 172 V58 Z" fill="url(#gWood)" stroke="url(#gGold)" stroke-width="9"/>
-          <path d="M160 30 L275 70 V170 C275 238 226 288 160 311 C94 288 45 238 45 170 V70 Z" fill="url(#gBlue)" stroke="#d9a632" stroke-width="3"/>
-          <!-- 顶部缎带 -->
-          <path d="M52 92 L268 92 L268 128 L52 128 Z" fill="url(#gGold)"/>
-          <text fill="#3a2312" font-family="sans-serif" font-size="23" font-weight="900" letter-spacing="4" text-anchor="middle" x="160" y="119">花心世界</text>
-          <!-- 皇冠 -->
-          <path d="M96 158 L112 180 L160 140 L208 180 L224 158 L214 206 L106 206 Z" fill="url(#gGold)" stroke="#8a5a12" stroke-width="3"/>
-          <circle cx="96" cy="154" fill="#ffe892" r="7"/><circle cx="224" cy="154" fill="#ffe892" r="7"/><circle cx="160" cy="136" fill="#ffe892" r="8"/>
-          <!-- 交叉剑（置于心形下层） -->
-          <g stroke-linecap="round">
-            <path d="M78 238 L244 302" stroke="#dbe4f0" stroke-width="8"/>
-            <path d="M242 238 L76 302" stroke="#dbe4f0" stroke-width="8"/>
-            <path d="M78 238 L95 244" stroke="url(#gGold)" stroke-width="10"/>
-            <path d="M242 238 L225 244" stroke="url(#gGold)" stroke-width="10"/>
-            <circle cx="76" cy="236" fill="#ffe08a" r="6"/>
-            <circle cx="244" cy="236" fill="#ffe08a" r="6"/>
-            <path d="M72 296 L76 308 L82 298 Z" fill="#eef3fa"/>
-            <path d="M238 298 L244 308 L248 296 Z" fill="#eef3fa"/>
-          </g>
-          <!-- 花心 / 心形 -->
-          <path d="M160 265 C120 240 108 220 108 205 C108 190 124 183 138 192 C148 199 160 210 160 210 C160 210 172 199 182 192 C196 183 212 190 212 205 C212 220 200 240 160 265 Z" fill="#e8584f" stroke="#ffd76a" stroke-width="4"/>
-          <path d="M160 210 V255" stroke="#ffd76a" stroke-linecap="round" stroke-width="4"/>
-        </svg>
+        <img class="emblem-svg" src="./clan-badge.png" alt="花心世界部落徽章">
         <div class="emblem-caption"><svg class="ico"><use href="#i-shield"></use></svg> 公开 · 透明 · 按笔可查</div>
       </div>
     </div>
@@ -771,7 +736,7 @@ ul{margin:0;padding:0;list-style:none}
 
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <div class="footer-brand"><svg aria-hidden="true" viewBox="0 0 48 48"><path d="M24 3l18 6.5v14c0 11-8 18-18 21.5C14 41.5 6 34.5 6 23.5v-14L24 3z" fill="#f5c34b"/><text fill="#1d3c6e" font-family="sans-serif" font-size="19" font-weight="900" text-anchor="middle" x="24" y="31">花</text></svg><div><strong>花心世界</strong><span>奶号运营 · 捐款公示</span></div></div>
+    <div class="footer-brand"><img aria-hidden="true" src="./clan-badge.png" alt=""><div><strong>花心世界</strong><span>奶号运营 · 捐款公示</span></div></div>
     <div class="footer-meta"><span id="footerUpdated"></span><span>本页为部落内部财务公示，非官方站点，与 Supercell 无关。</span></div>
   </div>
 </footer>
@@ -911,13 +876,6 @@ window.DONATION_RECORDS = [
   var sum = function (arr) { return arr.reduce(function (t, r) { return t + r.amount; }, 0); };
   var monthKey = function (d) { return d.slice(0, 7); };
   var uniq = function (arr) { return arr.filter(function (v, i, a) { return a.indexOf(v) === i; }); };
-  var AVATAR_COLORS = ['#2c5592', '#b2761a', '#2f9c72', '#a4538b', '#c05a45', '#4a7a9b', '#7a6433', '#5b6bb5'];
-
-  function avatarColor(name) {
-    var h = 0;
-    for (var i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
-    return AVATAR_COLORS[h % AVATAR_COLORS.length];
-  }
   function roleClass(role) {
     if (role.indexOf('副') === 0) return 'fu';
     if (role.indexOf('长') === 0) return 'zhang';
@@ -1071,10 +1029,8 @@ window.DONATION_RECORDS = [
   function renderTable() {
     var list = filteredRecords();
     $('ledgerBody').innerHTML = list.map(function (r) {
-      var initial = r.player.replace(/^花心丶/, '').charAt(0) || '花';
       return '<tr class="rec-row">' +
         '<td data-label="部落首领"><span class="player-cell">' +
-          '<span class="avatar" style="background:' + avatarColor(r.player) + '">' + esc(initial) + '</span>' +
           '<span class="player-name">' + esc(r.player) + '</span></span></td>' +
         '<td data-label="部落职务"><span class="role-tag ' + roleClass(r.role) + '">' + esc(r.role) + '</span></td>' +
         '<td data-label="捐款金额"><span class="amount-cell"><span class="c">' + CUR + '</span>' + money(r.amount) + '</span></td>' +
@@ -1108,12 +1064,10 @@ window.DONATION_RECORDS = [
     $('summaryMeta').innerHTML = '共 <b>' + rows.length + '</b> 位首领参与捐款 · 累计合计 <b>' + CUR + money(grand) + '</b>，按总金额降序排列';
     $('summaryBody').innerHTML = rows.map(function (r, i) {
       var pct = grand ? (r.total / grand * 100).toFixed(1) : '0.0';
-      var initial = r.name.replace(/^花心丶/, '').charAt(0) || '花';
       var topCls = i < 3 ? ' top' + (i + 1) : '';
       return '<tr class="rk-row' + topCls + '">' +
         '<td class="rk-no"><span class="rk-badge">' + (i + 1) + '</span></td>' +
         '<td data-label="部落首领"><span class="player-cell"><span class="rk-badge rk-chip">' + (i + 1) + '</span>' +
-          '<span class="avatar sm" style="background:' + avatarColor(r.name) + '">' + esc(initial) + '</span>' +
           '<span class="player-name">' + esc(r.name) + '</span></span></td>' +
         '<td data-label="部落职务"><span class="role-tag ' + roleClass(r.role) + '">' + esc(r.role) + '</span></td>' +
         '<td data-label="总金额" class="rk-total">' + CUR + money(r.total) + '</td>' +
