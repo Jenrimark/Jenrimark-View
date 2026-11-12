@@ -263,7 +263,7 @@ export default function LandingPage() {
           {/* Hero 字标 */}
           <div className="flex-1 flex flex-col items-center justify-center text-center min-h-[2rem]">
             <img
-              src="/jenrimark-logo.svg"
+              src="/assets/jenrimark-logo.svg"
               alt="Jenrimark"
               className="w-full max-w-3xl drop-shadow-lg"
               style={{ filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.5))' }}
@@ -389,7 +389,7 @@ export default function LandingPage() {
         <footer className="py-10 text-center">
           <div className="flex justify-center mb-4">
             <img
-              src="/jenrimark-emblem.svg"
+              src="/assets/jenrimark-emblem.svg"
               alt="Jenrimark 徽章"
               className="w-12 h-12 opacity-60 hover:opacity-90 transition-opacity"
             />
