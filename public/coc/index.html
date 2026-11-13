@@ -334,8 +334,8 @@ ul{margin:0;padding:0;list-style:none}
 .lg-bar{background:linear-gradient(180deg,#ffd873,#e0a52b)}
 .balance-strip{margin-top:22px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:20px 26px;border-radius:var(--r);
   background:linear-gradient(100deg,#fff6df,#fffdf6);border:1px solid #edd9a8;border-left:6px solid var(--gold)}
-.balance-strip .bs-icon{width:44px;height:44px;border-radius:12px;background:var(--gold);display:grid;place-items:center;color:#5a3c08;flex:none}
-.balance-strip .bs-icon .ico{width:24px;height:24px}
+.balance-strip .bs-icon{width:54px;height:54px;border-radius:12px;background:transparent;display:grid;place-items:center;flex:none}
+.balance-strip .bs-icon img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 2px 3px rgba(0,0,0,.14))}
 .balance-strip p{font-size:14px;color:#6a5b3f;line-height:1.75}
 .balance-strip strong{color:var(--blue-deep);font-weight:900}
 .balance-strip .bs-num{font-size:17px;color:#a66c12;font-weight:900;font-variant-numeric:tabular-nums}
@@ -684,8 +684,9 @@ ul{margin:0;padding:0;list-style:none}
 window.CLAN_CONFIG = {
   name: '花心世界',
   tag: '#部落标签',
-  serverCostPerMonth: 25,      // 每月服务器成本（元），仅用于运营背景说明
+  serverCostPerMonth: 25,      // 每月服务器成本（元），用于判断捐款是否覆盖成本
   currency: '¥',
+  startMonth: '2025-11',       // 奶号首次启用月（YYYY-MM），用于计算运行天数与月均
   updatedAt: '2026-11-12'
 };
 
@@ -759,6 +760,19 @@ window.DONATION_RECORDS = [
   var RAW = (window.DONATION_RECORDS || []).slice();
   var COST = Number(CFG.serverCostPerMonth) || 25;
   var CUR = CFG.currency || '¥';
+  var START_YM = String(CFG.startMonth || '2025-11');   // 奶号首次启用月，格式 YYYY-MM
+
+  function startDate() {
+    return new Date(Number(START_YM.slice(0, 4)), Number(START_YM.slice(5, 7)) - 1, 1);
+  }
+  function daysSinceStart() {
+    return Math.max(1, Math.floor((Date.now() - startDate().getTime()) / 86400000));
+  }
+  function monthsSinceStart() {
+    var now = new Date();
+    var n = (now.getFullYear() - startDate().getFullYear()) * 12 + (now.getMonth() - startDate().getMonth()) + 1;
+    return n > 0 ? n : 1;
+  }
 
   function normalize(list) {
     return (list || []).map(function (r, i) {
@@ -902,8 +916,6 @@ window.DONATION_RECORDS = [
   function renderOverview() {
     var total = sum(records);
     var players = uniq(records.map(function (r) { return r.player; })).length;
-    var monthCount = uniq(records.map(function (r) { return monthKey(r.date); })).length;
-    var avg = monthCount ? total / monthCount : 0;
     var top = records.slice().sort(function (a, b) { return b.amount - a.amount || b.date.localeCompare(a.date); })[0] || { amount: 0, player: '—', date: '' };
     var cards = [
       { icon: 'i-coin', label: '累计捐款总额', value: CUR + money(total), hint: '自首笔记录至今 · 全部到账' },
@@ -920,11 +932,20 @@ window.DONATION_RECORDS = [
     $('costValue').textContent = COST;
     $('footerUpdated').innerHTML = '数据更新至 <strong class="date-strong date-strong-light">' + esc(currentUpdated()) + '</strong> · 共 ' + records.length + ' 笔记录';
 
-    // 捐款合计说明（仅统计捐款，不统计支出）
+    // 运营总结：运行天数 / 累计捐款 / 月均（自启用月起算）与成本对比
+    var runDays = daysSinceStart();
+    var runMonths = monthsSinceStart();
+    var avgAll = total / runMonths;
+    var covered = avgAll >= COST;
     $('balanceStrip').innerHTML =
-      '<div class="bs-icon"><svg class="ico"><use href="#i-coin"></use></svg></div>' +
-      '<p>累计到账捐款 <strong>' + CUR + money(total) + '</strong>，共 <strong>' + records.length + '</strong> 笔，覆盖 <strong>' + monthCount + '</strong> 个自然月，' +
-      '月均约 <span class="bs-num">' + CUR + money(avg) + '</span>。</p>';
+      '<div class="bs-icon"><img alt="花心世界部落徽章" src="./clan-badge.png"></div>' +
+      '<p>我们从 <strong>' + Number(START_YM.slice(0, 4)) + ' 年 ' + Number(START_YM.slice(5, 7)) + ' 月</strong>首次启用奶号运营，' +
+      '至今已经稳定运行 <strong>' + runDays + '</strong> 天，累计到账捐款 <span class="bs-num">' + CUR + money(total) + '</span>，' +
+      '共 <strong>' + records.length + '</strong> 笔，月均约 <span class="bs-num">' + CUR + money(avgAll) + '</span>，' +
+      (covered
+        ? '<strong>多于月度服务器花费，奶号将持续运营。</strong>'
+        : '<strong>少于月度服务器花费，奶号运营即将中断。</strong>') +
+      '</p>';
   }
 
   /* ---------------- 捐款明细表（逐笔，时间倒序） ---------------- */
